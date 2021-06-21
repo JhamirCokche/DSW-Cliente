@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Usuario</title>
+<title>Marca</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -91,10 +91,10 @@
 <body>
 	<div class="container">
 		
-			<h3 class="text-center mt-4">LISTA DE USUARIOS</h3>
+			<h3 class="text-center mt-4">LISTA DE MARCAS</h3>
 			
 			<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#modalMedicamento" id="btn-nuevo">
-			 <i class="far fa-file"></i> Nuevo Usuario
+			 <i class="far fa-file"></i> Nueva Marca
 			</button>
 			<div class=" mt-2">
 	
@@ -102,28 +102,21 @@
 							  <thead>
 							   <tr>
 					                <th>Código</th>
-					                 <th>Nombre</th>
-					                <th>Apellido</th>
-					                <th>Correo</th>
-					                <th>Direccion</th>
-					                <th>Numero</th>
-					                <th>Tipo</th>
+					                 <th>Descripcion</th>
+					                <th>Fecha</th>
 					                <th>Editar</th>
 					                <th>Eliminar</th>
 					            </tr>
 							  </thead>
 							  <tbody>
-								<tr th:each="bean:${usuarios}">
-							      <td th:text="${bean.id_usuario}"></td>
-							      <td th:text="${bean.nom_usuario}"></td>
-							      <td th:text="${bean.ape_usuario}"></td>
-							      <td th:text="${bean.direc_usuario}"></td>
-							      <td th:text="${bean.correo_usuario}"></td>
-							      <td th:text="${bean.num_usuario}"></td>
-							      <td th:text="${bean.tipo_usuario}"></td>
+								<tr th:each="bean:${marcas}">
+							      <td th:text="${bean.codigo}"></td>
+							      <td th:text="${bean.descripcion}"></td>
+							      <td th:text="${bean.fecha}"></td>
+							     
 						
-							      <td><a th:href="@{buscar/(codigo=${bean.id_usuario})}" class="btn btn-info btn-editar" data-toggle="modal" data-target="#modalMedicamento"><i class="far fa-edit"></i></a></td>
-							      <td><a th:href="@{eliminar/(codigo=${bean.id_usuario})}" class="btn btn-danger btn-eliminar"><i class="far fa-trash-alt"></i></a></td>
+							      <td><a th:href="@{buscar/(codigo=${bean.codigo})}" class="btn btn-info btn-editar" data-toggle="modal" data-target="#modalMedicamento"><i class="far fa-edit"></i></a></td>
+							      <td><a th:href="@{eliminar/(codigo=${bean.codigo})}" class="btn btn-danger btn-eliminar"><i class="far fa-trash-alt"></i></a></td>
 							    </tr>  
 							  </tbody>
 				</table>
@@ -135,46 +128,27 @@
 						<div class="modal-dialog modal-dialog-centered modal-login modal-lg" >					
 							<div class="modal-content">
 								<div class="modal-header bg-blue-darker">
-									<h4 class="modal-title text-white">Usuario</h4>
+									<h4 class="modal-title text-white">Marca</h4>
 								</div>
 								<div class="modal-body">
-									<form method="POST" id="idRegistra" th:action="@{/usuario/guardar}">	
+									<form method="POST" id="idRegistra" th:action="@{/marca/guardar}">	
 										<input type="hidden" id="idCodigo" name="codigo" value="0">
 										<div class="container">
 											<div class="row">
-												<div class="form-group has-feedback col-md-12">
-														<label for="exampleInputEmail1"><b>Nombre</b></label><br>		
-														<i class="fas fa-file-signature form-control-feedback2"></i>	
-														<input type="text" class="form-control" id="idNombre" name="nombre" placeholder="Ingresar nombre">																										
-												</div>
+												
 												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Apellido</b></label><br>	
+													<label for="exampleInputEmail1"><b>Descripcion</b></label><br>	
 													<i class="fas fa-pen-fancy form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idApellido"  name="apellido" placeholder="Ingresar apellido">	
-												</div>
-												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Correo</b></label><br>
-													<i class="fas fa-money-check-alt form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idCorreo"  name="correo" placeholder="Ingresar correo">														
+													<input type="text" class="form-control" id="idDescripcion"  name="descripcion" placeholder="Ingresar apellido">	
 												</div>
 												
-												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Direccion</b></label><br>
-													<i class="fas fa-money-check-alt form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idDireccion"  name="direccion" placeholder="Ingresar direccion">														
-												</div>
 												
 												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Numero</b></label><br>
-													<i class="fas fa-money-check-alt form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idNumero"  name="numero" placeholder="Ingresar numero">														
+													<label for="exampleInputEmail1"><b>Fecha</b></label><br>	
+													<i class="fas fa-pen-fancy form-control-feedback2"></i>
+													<input type="text" class="form-control" id="idFecha"  name="fecha" placeholder="Ingresar apellido">	
 												</div>
 												
-												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Tipo</b></label><br>
-													<i class="fas fa-money-check-alt form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idTipo"  name="tipo" placeholder="Ingresar tipo">														
-												</div>
 												
 											    												
 											    
@@ -243,13 +217,9 @@
 		var url=$(this).attr("href");
 		$.get(url,function(response){
 			console.log(response);
-				$("#idCodigo").val(response.id_usuario);
-				$("#idNombre").val(response.nom_usuario);
-				$("#idApellido").val(response.ape_usuario);
-				$("#idCorreo").val(response.correo_usuario);
-				$("#idDireccion").val(response.direc_usuario);
-				$("#idNumero").val(response.num_usuario);
-				$("#idTipo").val(response.tipo_usuario);
+				$("#idCodigo").val(response.codigo);
+				$("#idDescripcion").val(response.descripcion);
+				$("#idFecha").val(response.fecha);
 				
 				
 			
