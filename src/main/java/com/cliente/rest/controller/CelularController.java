@@ -41,6 +41,31 @@ public class CelularController {
 		return "celular";
 	}
 	
+	@RequestMapping("/catalogo")
+	public String catalogo(Model model) {
+		try {
+			RestTemplate rt=new RestTemplate();
+			//acceder a la ruta "lista" del servicio de medicamento
+			ResponseEntity<Celular[]> response1=rt.getForEntity(REST_CELULAR+"lista", Celular[].class);
+			ResponseEntity<Marca[]> response2=rt.getForEntity(REST_MARCA+"lista", Marca[].class);
+			model.addAttribute("celulares",response1.getBody());
+			model.addAttribute("marcas",response2.getBody());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "catalogo";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/guardar")
 	public String guardar(@RequestParam("codigo") int cod,@RequestParam("nombre") String nom,
 								@RequestParam("stock") int stock,@RequestParam("precio") double pre,
