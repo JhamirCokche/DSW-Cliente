@@ -22,7 +22,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/validar")
-	public String validar(@RequestParam("nombre") String nom, @RequestParam("contraseña") String contr) {
+	public String validar(@RequestParam("usuario") String nom, @RequestParam("clave") String contr) {
 		
 		Usuario bean=null;
 		try {
@@ -33,16 +33,20 @@ public class LoginController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String cadena="";
 		
-		if(bean.getTipo_usuario()=="admin") {
-			cadena="celular";
+			String cad ="" ;
+		if(bean != null) {
+		if(bean.getTipo_usuario().equals("admin")) {
+			cad = "redirect:/celular/";
 		}
-		if(bean.getTipo_usuario()=="cliente") {
-			cadena="carrito";
+		if(bean.getTipo_usuario().equals("cliente")) {
+			
+			cad = "redirect:/celular/catalogo";
 		}
-		return cadena;
+		}else
+			cad ="redirect:/login/";
 		
+		return cad;
 	}
 	
 

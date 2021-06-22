@@ -39,6 +39,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/guardar")
 	public String guardar(@RequestParam("codigo") int cod,@RequestParam("nombre") String nom, @RequestParam("apellido") String ape,
+			@RequestParam("usuario") String usu,@RequestParam("clave") String cla,
 								@RequestParam("direccion") String direc,@RequestParam("correo") String cor,
 								@RequestParam("numero") String num, @RequestParam("tipo") String tipusu,
 								RedirectAttributes redirect) {
@@ -47,6 +48,8 @@ public class UsuarioController {
 			bean.setId_usuario(cod);
 			bean.setNom_usuario(nom);
 			bean.setApe_usuario(ape);
+			bean.setUser(usu);
+			bean.setContraseÃ±a(cla);
 			bean.setDirec_usuario(direc);
 			bean.setCorreo_usuario(cor);
 			bean.setNum_usuario(num);
@@ -101,7 +104,7 @@ public class UsuarioController {
 			rt.delete(REST_USUARIO+"eliminar/"+cod);
 			redirect.addFlashAttribute("MENSAJE","usuario eliminado");
 		} catch (Exception e) {
-			redirect.addFlashAttribute("MENSAJE","Error en la eliminación");
+			redirect.addFlashAttribute("MENSAJE","Error en la eliminaciï¿½n");
 			e.printStackTrace();
 		}
 		
