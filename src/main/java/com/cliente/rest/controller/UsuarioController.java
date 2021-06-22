@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import com.cliente.rest.entity.Celular;
 import com.cliente.rest.entity.Usuario;
 import com.google.gson.Gson;
 
@@ -108,5 +108,19 @@ public class UsuarioController {
 		return "redirect:/usuario/";
 	}
 	
+	@RequestMapping("/buscarUsu")
+
+	public  String buscarporUsuario(@RequestParam("usuario") String cod, Model Modelo) {
+		try {
+			RestTemplate rt=new RestTemplate();
+			ResponseEntity<Usuario[]> response=rt.getForEntity(REST_USUARIO+"buscarUsu/"+cod, Usuario[].class);
+			
+			Modelo.addAttribute("usuarios",response.getBody());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "usuario";
+	}
 	
 }
