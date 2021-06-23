@@ -1,12 +1,15 @@
 package com.cliente.rest.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cliente.rest.entity.Carrito;
 import com.cliente.rest.entity.Celular;
+import com.cliente.rest.entity.Marca;
+import com.cliente.rest.entity.precioCant;
 import com.google.gson.Gson;
 
 @Controller
@@ -30,8 +36,10 @@ public class CarritoController {
 		return "Carrito";
 	}  
 	
-	@RequestMapping("/agregar/{codigo}")
-	public String agregarCarrito(@PathVariable("codigo") int cod, RedirectAttributes redirect) {
+
+	
+	@RequestMapping("/agregar/{id_celular}")
+	public String agregarCarrito(@PathVariable("id_celular") int cod, RedirectAttributes redirect, Model modal) {
 	
 			Celular bean=null;
 			try {
@@ -54,6 +62,19 @@ public class CarritoController {
 			
 			rt.postForObject(REST_CARRITO+"registrar", request, String.class);
 			redirect.addFlashAttribute("MENSAJE","Celular registrado");
+			
+			try {
+				RestTemplate rs=new RestTemplate();
+				//acceder a la ruta "lista" del servicio de medicamento
+				ResponseEntity<Carrito[]> response1=rs.getForEntity(REST_CARRITO+"lista", Carrito[].class);
+				
+				
+				modal.addAttribute("carrito",response1.getBody());
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
 		
 		
 		return "Carrito";
