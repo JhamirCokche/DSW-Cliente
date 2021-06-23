@@ -49,6 +49,8 @@
                                 <span th:text="${bean.nombre}"> </span>
                             </h4>
                             <h5>$<span th:text="${bean.precio}"></span></h5><hr>
+                            
+                            <a th:href="@{'/carrito/agregar/' + ${bean.id_celular}" class="btn btn-danger">Agregar al carrito</a>
 
 
 
