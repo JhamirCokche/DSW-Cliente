@@ -52,6 +52,7 @@ public class UsuarioController {
 			bean.setDirec_usuario(direc);
 			bean.setCorreo_usuario(cor);
 			bean.setNum_usuario(num);
+			bean.setClave(cla);
 			bean.setTipo_usuario(tipusu);
 			//json
 			Gson gson=new Gson();
@@ -96,6 +97,7 @@ public class UsuarioController {
 			bean.setDirec_usuario(direc);
 			bean.setCorreo_usuario(cor);
 			bean.setNum_usuario(num);
+			bean.setClave(cla);
 			bean.setTipo_usuario(tipusu);
 			//json
 			Gson gson=new Gson();

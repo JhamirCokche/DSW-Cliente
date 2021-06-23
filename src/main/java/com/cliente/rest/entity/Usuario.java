@@ -18,16 +18,17 @@ private String num_usuario;
 
 private String tipo_usuario;
 
-private String contraseña;
+private String clave;
 
-public String getContraseña() {
-	return contraseña;
+
+
+public String getClave() {
+	return clave;
 }
 
-public void setContraseña(String contraseña) {
-	this.contraseña = contraseña;
+public void setClave(String clave) {
+	this.clave = clave;
 }
-
 
 public int getId_usuario() {
 	return id_usuario;
