@@ -138,6 +138,21 @@ public class CelularController {
 		return "redirect:/celular/";
 	}
 	
+	
+	@RequestMapping("/buscarNom")
+
+	public  String buscarporNombre(@RequestParam("nombre") String cod, Model Modelo) {
+		try {
+			RestTemplate rt=new RestTemplate();
+			ResponseEntity<Celular[]> response=rt.getForEntity(REST_CELULAR+"buscarNom/"+cod, Celular[].class);
+			
+			Modelo.addAttribute("celulares",response.getBody());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "celular";
+	}
 }
 
 

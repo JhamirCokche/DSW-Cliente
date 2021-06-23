@@ -135,6 +135,12 @@
 			<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#modalMedicamento" id="btn-nuevo">
 			 <i class="far fa-file"></i> Nuevo Usuario
 			</button>
+			<form th:action="@{/usuario/buscarUsu}" method="post">
+			<div class="form-group has-feedback col-md-7">
+			<input type="text" name="usuario" class="form-control col-md-7"> </div>
+			<button type="submit" id="Buscar" class="btn btn-primary"><i class="fas fa-save"></i> Buscar</button>
+			</form>
+			
 			<div class=" mt-2">
 	
 				<table class="table table-striped table-bordered mt-5" id="tableMedicamentos">
@@ -147,6 +153,7 @@
 					                <th>Direccion</th>
 					                <th>Numero</th>
 					                <th>Tipo</th>
+					                <th>Usuario</th>
 					                <th>Editar</th>
 					                <th>Eliminar</th>
 					            </tr>
@@ -159,8 +166,9 @@
 							      <td th:text="${bean.direc_usuario}"></td>
 							      <td th:text="${bean.correo_usuario}"></td>
 							      <td th:text="${bean.num_usuario}"></td>
+
 							      <td th:text="${bean.tipo_usuario}"></td>
-						
+						           <td th:text="${bean.user}"></td>
 							      <td><a th:href="@{buscar/(codigo=${bean.id_usuario})}" class="btn btn-info btn-editar" data-toggle="modal" data-target="#modalMedicamento"><i class="far fa-edit"></i></a></td>
 							      <td><a th:href="@{eliminar/(codigo=${bean.id_usuario})}" class="btn btn-danger btn-eliminar"><i class="far fa-trash-alt"></i></a></td>
 							    </tr>  
@@ -219,13 +227,17 @@
 													<input type="text" class="form-control" id="idNumero"  name="numero" placeholder="Ingresar numero">														
 												</div>
 												
-												<div class="form-group has-feedback col-md-4">
-													<label for="exampleInputEmail1"><b>Tipo</b></label><br>
-													<i class="fas fa-money-check-alt form-control-feedback2"></i>
-													<input type="text" class="form-control" id="idTipo"  name="tipo" placeholder="Ingresar tipo">														
-												</div>
 												
-											    												
+												
+											     <div class="form-group has-feedback col-md-6">	
+														<label for="exampleInputEmail1"><b>Laboratorio</b></label><br>
+												        <i class="fas fa-prescription-bottle-alt form-control-feedback2"></i>
+													    <select class="form-control" name="tipo" id="idmarca">
+													      <option value="0">[Seleccione Laboratorio]</option>
+													      <option value="admin"> admin </option>
+													      <option value="cliente"> cliente</option>
+													    </select>
+												 </div>												
 											    
 											</div>
 										</div>								

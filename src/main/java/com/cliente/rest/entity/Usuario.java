@@ -18,7 +18,16 @@ private String num_usuario;
 
 private String tipo_usuario;
 
-private String contraseÃ±a;
+private String contraseña;
+
+public String getContraseña() {
+	return contraseña;
+}
+
+public void setContraseña(String contraseña) {
+	this.contraseña = contraseña;
+}
+
 
 public int getId_usuario() {
 	return id_usuario;
@@ -84,13 +93,6 @@ public void setUser(String user) {
 	this.user = user;
 }
 
-public String getContraseÃ±a() {
-	return contraseÃ±a;
-}
-
-public void setContraseÃ±a(String contraseÃ±a) {
-	this.contraseÃ±a = contraseÃ±a;
-}
 
 
 
