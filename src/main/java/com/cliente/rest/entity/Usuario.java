@@ -18,14 +18,14 @@ private String num_usuario;
 
 private String tipo_usuario;
 
-private String contraseÃ±a;
+private String contraseña;
 
-public String getContraseÃ±a() {
-	return contraseÃ±a;
+public String getContraseña() {
+	return contraseña;
 }
 
-public void setContraseÃ±a(String contraseÃ±a) {
-	this.contraseÃ±a = contraseÃ±a;
+public void setContraseña(String contraseña) {
+	this.contraseña = contraseña;
 }
 
 

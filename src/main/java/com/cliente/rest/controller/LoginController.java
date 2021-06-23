@@ -15,11 +15,19 @@ import com.cliente.rest.entity.Usuario;
 public class LoginController {
 	
 	private String REST_LOGIN="http://localhost:8090/login/";
+	//private String REST_REGISTRO="http://localhost:8090/registro/";
 	
 	@GetMapping("/")
 	public String login() {
 		return "login";
 	}
+	
+	@GetMapping("/registro")
+	public String registro() {
+		return "registro";
+	}
+
+	
 	
 	@RequestMapping("/validar")
 	public String validar(@RequestParam("usuario") String nom, @RequestParam("clave") String contr) {
