@@ -4,6 +4,8 @@ public class Usuario {
 
 private int id_usuario;
 
+private String user;
+
 private String nom_usuario;
 
 private String ape_usuario;
@@ -16,17 +18,7 @@ private String num_usuario;
 
 private String tipo_usuario;
 
-private String user;
-
 private String contraseña;
-
-public String getUser() {
-	return user;
-}
-
-public void setUser(String user) {
-	this.user = user;
-}
 
 public String getContraseña() {
 	return contraseña;
@@ -35,6 +27,7 @@ public String getContraseña() {
 public void setContraseña(String contraseña) {
 	this.contraseña = contraseña;
 }
+
 
 public int getId_usuario() {
 	return id_usuario;
@@ -91,6 +84,15 @@ public String getTipo_usuario() {
 public void setTipo_usuario(String tipo_usuario) {
 	this.tipo_usuario = tipo_usuario;
 }
+
+public String getUser() {
+	return user;
+}
+
+public void setUser(String user) {
+	this.user = user;
+}
+
 
 
 
